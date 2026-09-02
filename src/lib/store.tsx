@@ -35,6 +35,8 @@ type Store = {
   addToCart: (id: string, qty?: number) => void;
   setQty: (id: string, qty: number) => void;
   removeFromCart: (id: string) => void;
+  clearCart: () => void;
+  updateProfile: (patch: Partial<Pick<SessionUser, "name" | "city">>) => void;
   doneTasks: string[];
   toggleTask: (id: string) => void;
   todayProgress: number;
@@ -121,6 +123,25 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setCart((prev) => prev.filter((l) => l.id !== id));
   }, []);
 
+  const clearCart = useCallback(() => {
+    setCart([]);
+  }, []);
+
+  const updateProfile = useCallback((patch: Partial<Pick<SessionUser, "name" | "city">>) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const name = patch.name?.trim() || prev.name;
+      const next: SessionUser = {
+        ...prev,
+        ...patch,
+        name,
+        initials: initialsOf(name) || prev.initials,
+      };
+      localStorage.setItem(AUTH_KEY, JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   const toggleTask = useCallback((id: string) => {
     setDoneTasks((prev) => (prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id]));
   }, []);
@@ -151,17 +172,38 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       addToCart,
       setQty,
       removeFromCart,
+      clearCart,
+      updateProfile,
       doneTasks,
       toggleTask,
       todayProgress: todaysTasks.length ? Math.round((completed / todaysTasks.length) * 100) : 0,
     };
-  }, [hydrated, user, signIn, signOut, cart, cartLines, addToCart, setQty, removeFromCart, doneTasks, toggleTask]);
+  }, [hydrated, user, signIn, signOut, cart, cartLines, addToCart, setQty, removeFromCart, clearCart, updateProfile, doneTasks, toggleTask]);
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }
 
 export function useStore() {
   const ctx = useContext(StoreContext);
-  if (!ctx) throw new Error("useStore must be used inside StoreProvider");
+  if (!ctx) {
+    return {
+      hydrated: false,
+      user: null,
+      signIn: () => {},
+      signOut: () => {},
+      cart: [],
+      cartLines: [],
+      cartCount: 0,
+      cartTotal: 0,
+      addToCart: () => {},
+      setQty: () => {},
+      removeFromCart: () => {},
+      clearCart: () => {},
+      updateProfile: () => {},
+      doneTasks: [],
+      toggleTask: () => {},
+      todayProgress: 0,
+    } satisfies Store;
+  }
   return ctx;
 }

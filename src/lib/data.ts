@@ -13,15 +13,15 @@ export const img = {
   harvest: "https://live.staticflickr.com/3469/3956766930_fbac78a5ff_b.jpg",
   market: "https://live.staticflickr.com/5076/5894223386_13742dd796_b.jpg",
   watering: "https://live.staticflickr.com/4293/35630957290_bfc5d5df7f_b.jpg",
-  seedling: "https://live.staticflickr.com/3428/3383000639_036204dfd3_b.jpg",
+  seedling: "https://images.unsplash.com/photo-1778265592435-24e9f967811d?fm=jpg&q=60&w=800&auto=format&fit=crop",
   greenhouse: "https://live.staticflickr.com/3108/3962730549_a8bdeedf84_b.jpg",
   compost: "https://live.staticflickr.com/5195/14264819172_2b2390a56f_b.jpg",
-  wateringcan: "https://live.staticflickr.com/8849/29001407425_f0054c2369_b.jpg",
-  seeds: "https://live.staticflickr.com/3088/2316549713_6df79c72b7_b.jpg",
-  pots: "https://live.staticflickr.com/7090/6904711304_f28c6228db_b.jpg",
-  gloves: "https://live.staticflickr.com/3950/33639520876_8b275774b9_b.jpg",
-  planter: "https://live.staticflickr.com/2466/3618264594_749e844348_b.jpg",
-  tools: "https://live.staticflickr.com/5094/5543062417_205309e1cf_b.jpg",
+  wateringcan: "https://images.unsplash.com/photo-1599277100479-3252d492a19a?fm=jpg&q=60&w=800&auto=format&fit=crop",
+  seeds: "https://images.unsplash.com/photo-1649061261055-1d6645cdc747?fm=jpg&q=60&w=800&auto=format&fit=crop",
+  pots: "https://images.unsplash.com/photo-1770460063145-2e6ef6f561e6?fm=jpg&q=60&w=800&auto=format&fit=crop",
+  gloves: "https://images.unsplash.com/photo-1710666184386-9f42d0227237?fm=jpg&q=60&w=800&auto=format&fit=crop",
+  planter: "https://images.unsplash.com/photo-1685475183233-0058b8501525?fm=jpg&q=60&w=800&auto=format&fit=crop",
+  tools: "https://images.unsplash.com/photo-1557296691-edb10ad8da28?fm=jpg&q=60&w=800&auto=format&fit=crop",
   tomato: "https://live.staticflickr.com/5276/5843173257_3134da672b_b.jpg",
   basil: "https://upload.wikimedia.org/wikipedia/commons/0/02/Holy_Basil_plant_leaves.jpg",
   lettuce: "https://live.staticflickr.com/3186/2833923675_87aee92e4b_b.jpg",
@@ -579,7 +579,17 @@ export const posts: Post[] = [
   },
 ];
 
-export const guides = [
+export type Guide = {
+  slug: string;
+  title: string;
+  minutes: number;
+  level: string;
+  image: string;
+  excerpt: string;
+  content: Array<{ heading: string; text: string }>;
+};
+
+export const guides: Guide[] = [
   {
     slug: "square-foot-balcony",
     title: "Square-foot planning for a 2 ft rail",
@@ -587,6 +597,13 @@ export const guides = [
     level: "Beginner",
     image: img.balcony,
     excerpt: "How to fit five crops on a railing without shading each other out.",
+    content: [
+      { heading: "Assess your light", text: "Watch the railing for one day. Count the hours of direct sun between 10am and 4pm. If you have 6+ hours, you can grow tomatoes, basil, and peppers. With 3–5 hours, choose lettuce, radish, and mint. Less than 3 hours means leafy greens and shade-tolerant herbs only." },
+      { heading: "Measure and divide", text: "A standard balcony rail is often around 2 ft deep by 4–6 ft long. Divide it into imaginary 1 ft squares. Each square can hold one large pot (30 cm), two medium pots (20 cm), or four small pots (10 cm)." },
+      { heading: "Stack vertically", text: "Use railing planters that straddle the rail, then add a small freestanding tower for the corners. Place tall crops like tomatoes at the back or centre so they don’t cast shadows on shorter plants." },
+      { heading: "Choose compatible crops", text: "Tomato + basil + lettuce works well because basil repels whitefly and lettuce enjoys the partial shade cast by tomato leaves. Radish grows fast enough to finish before tomato expands." },
+      { heading: "Watering plan", text: "Railing pots dry out faster than ground beds. Use self-watering containers or add a drip tray to each pot. Water in the morning and check soil moisture with your finger to a depth of 2 cm." },
+    ],
   },
   {
     slug: "watering-rhythm",
@@ -595,6 +612,13 @@ export const guides = [
     level: "Beginner",
     image: img.watering,
     excerpt: "Finger-test, drainage checks and the two-day rule for container soil.",
+    content: [
+      { heading: "The finger test first", text: "Before you water, push your finger 2 cm into the soil. If it feels damp and cool, wait. If it’s dry and warm, water slowly until excess drains from the bottom. This simple habit prevents both underwatering and root rot." },
+      { heading: "Morning wins", text: "Water between 6am and 9am. Plants absorb moisture best before the heat of the day, and wet leaves at night invite mildew. If you miss the morning window, late afternoon is the next best choice." },
+      { heading: "The two-day rule", text: "In warm weather, most container plants need water every 1–2 days. If the pot is small, terracotta, or in full sun, assume daily. In cool or overcast weather, stretch to every third day." },
+      { heading: "Drainage check", text: "After watering, look at the saucer. If more than 1 cm of water stands there after 30 minutes, your soil is staying too wet. Improve drainage by adding perlite or switching to a coir-based mix." },
+      { heading: "Signs of trouble", text: "Wilting in morning sun usually means the plant is thirsty. Wilting in the evening after a wet day often means roots are suffocating. Yellow lower leaves can be overwatering; crispy brown tips can be underwatering or salt buildup." },
+    ],
   },
   {
     slug: "harvest-windows",
@@ -603,6 +627,13 @@ export const guides = [
     level: "Intermediate",
     image: img.harvest,
     excerpt: "The visual cues that beat any calendar reminder for peak flavour.",
+    content: [
+      { heading: "Why dates mislead", text: "Packets say ‘ready in 68 days’, but your rooftop might be 5°C warmer or cooler than the trial field. Learn to read the plant instead of the calendar. Visual and tactile cues are more reliable than day-counting." },
+      { heading: "Tomato harvest window", text: "Pick when the fruit is fully coloured and gives slightly under gentle pressure. The shoulders can still be pale green. If you pick too early, flavour stays flat; too late and the flesh mealy. Check daily during peak season." },
+      { heading: "Lettuce and greens", text: "Harvest outer leaves when they are at least 10 cm long and feel crinkly rather than smooth. Smooth, pale leaves mean the plant is bolting. Cut in the morning when leaves are turgid and store in a perforated bag in the fridge." },
+      { heading: "Root crops", text: "Pull a test radish or carrot when the top of the root is about 2 cm wide. If it’s still thin and spindly, wait a few days. If it’s split or woody, you’re late—next time sow successionally every 10 days." },
+      { heading: "Herbs", text: "Cut stems just above a leaf node in the morning when oil content is highest. Never take more than one-third of the plant at once. Regular harvesting actually encourages bushier growth." },
+    ],
   },
   {
     slug: "wind-on-rooftops",
@@ -611,6 +642,13 @@ export const guides = [
     level: "Intermediate",
     image: img.rooftop,
     excerpt: "Screens, staking and pot weighting for gardens above the treeline.",
+    content: [
+      { heading: "Read the wind", text: "Spend one day watching flags, laundry, or lightweight ribbon tied to a railing. Note the prevailing direction and whether gusts come in sudden bursts or sustained streams. Rooftops often have stronger wind at 2–3 storeys than at ground level." },
+      { heading: "Windbreak options", text: "A 50% shade cloth stretched on the windward side cuts speed without creating turbulence. A bamboo screen or reed fencing works too. Anchor it to the railing with bungee cords so it can flex rather than snap." },
+      { heading: "Stake before you need to", text: "Insert stakes at planting time, not after the plant leans. Use soft plant ties in a figure-eight loop so the stem isn’t rubbed raw. For tomatoes and peppers, a single sturdy cane pushed 15 cm into the soil is enough." },
+      { heading: "Pot weighting", text: "Lightweight plastic pots blow over. Fill the bottom third of each pot with gravel or broken terracotta before adding soil. For extra security, sit two smaller pots inside a larger decorative one." },
+      { heading: "Choose tough plants", text: "Chives, mint, thyme, and oregano tolerate wind better than delicate leafy greens. If the site is very exposed, grow herbs and edible flowers in the windiest spot and reserve the sheltered corner for tomatoes and peppers." },
+    ],
   },
 ];
 

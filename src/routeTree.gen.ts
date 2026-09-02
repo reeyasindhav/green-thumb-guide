@@ -10,33 +10,311 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as GuidesRouteImport } from './routes/guides'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as TermsOfUseRouteImport } from './routes/terms-of-use'
+import { Route as TrackerRouteImport } from './routes/tracker'
+import { Route as WeatherRouteImport } from './routes/weather'
+import { Route as appCartRouteImport } from './routes/(app)/cart'
+import { Route as appCheckoutRouteImport } from './routes/(app)/checkout'
+import { Route as appDashboardRouteImport } from './routes/(app)/dashboard'
+import { Route as appLoginRouteImport } from './routes/(app)/login'
+import { Route as appProfileRouteImport } from './routes/(app)/profile'
+import { Route as appSignupRouteImport } from './routes/(app)/signup'
+import { Route as GuidesIndexRouteImport } from './routes/guides/index'
+import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
+import { Route as ShopIndexRouteImport } from './routes/shop/index'
+import { Route as ShopProductIdRouteImport } from './routes/shop/$productId'
+import { Route as TrackerIndexRouteImport } from './routes/tracker/index'
+import { Route as TrackerSlugRouteImport } from './routes/tracker/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesRoute = GuidesRouteImport.update({
+  id: '/guides',
+  path: '/guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfUseRoute = TermsOfUseRouteImport.update({
+  id: '/terms-of-use',
+  path: '/terms-of-use',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrackerRoute = TrackerRouteImport.update({
+  id: '/tracker',
+  path: '/tracker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeatherRoute = WeatherRouteImport.update({
+  id: '/weather',
+  path: '/weather',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const appCartRoute = appCartRouteImport.update({
+  id: '/(app)/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const appCheckoutRoute = appCheckoutRouteImport.update({
+  id: '/(app)/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const appDashboardRoute = appDashboardRouteImport.update({
+  id: '/(app)/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const appLoginRoute = appLoginRouteImport.update({
+  id: '/(app)/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const appProfileRoute = appProfileRouteImport.update({
+  id: '/(app)/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const appSignupRoute = appSignupRouteImport.update({
+  id: '/(app)/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GuidesRoute,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => GuidesRoute,
+} as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ShopRoute,
+} as any)
+const ShopProductIdRoute = ShopProductIdRouteImport.update({
+  id: '/$productId',
+  path: '/$productId',
+  getParentRoute: () => ShopRoute,
+} as any)
+const TrackerIndexRoute = TrackerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TrackerRoute,
+} as any)
+const TrackerSlugRoute = TrackerSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => TrackerRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/calendar': typeof CalendarRoute
+  '/community': typeof CommunityRoute
+  '/guides': typeof GuidesRouteWithChildren
+  '/planner': typeof PlannerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shop': typeof ShopRouteWithChildren
+  '/terms-of-use': typeof TermsOfUseRoute
+  '/tracker': typeof TrackerRouteWithChildren
+  '/weather': typeof WeatherRoute
+  '/cart': typeof appCartRoute
+  '/checkout': typeof appCheckoutRoute
+  '/dashboard': typeof appDashboardRoute
+  '/login': typeof appLoginRoute
+  '/profile': typeof appProfileRoute
+  '/signup': typeof appSignupRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/shop/$productId': typeof ShopProductIdRoute
+  '/tracker/$slug': typeof TrackerSlugRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/shop/': typeof ShopIndexRoute
+  '/tracker/': typeof TrackerIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/calendar': typeof CalendarRoute
+  '/community': typeof CommunityRoute
+  '/planner': typeof PlannerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-of-use': typeof TermsOfUseRoute
+  '/weather': typeof WeatherRoute
+  '/cart': typeof appCartRoute
+  '/checkout': typeof appCheckoutRoute
+  '/dashboard': typeof appDashboardRoute
+  '/login': typeof appLoginRoute
+  '/profile': typeof appProfileRoute
+  '/signup': typeof appSignupRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/shop/$productId': typeof ShopProductIdRoute
+  '/tracker/$slug': typeof TrackerSlugRoute
+  '/guides': typeof GuidesIndexRoute
+  '/shop': typeof ShopIndexRoute
+  '/tracker': typeof TrackerIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/calendar': typeof CalendarRoute
+  '/community': typeof CommunityRoute
+  '/guides': typeof GuidesRouteWithChildren
+  '/planner': typeof PlannerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shop': typeof ShopRouteWithChildren
+  '/terms-of-use': typeof TermsOfUseRoute
+  '/tracker': typeof TrackerRouteWithChildren
+  '/weather': typeof WeatherRoute
+  '/(app)/cart': typeof appCartRoute
+  '/(app)/checkout': typeof appCheckoutRoute
+  '/(app)/dashboard': typeof appDashboardRoute
+  '/(app)/login': typeof appLoginRoute
+  '/(app)/profile': typeof appProfileRoute
+  '/(app)/signup': typeof appSignupRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/shop/$productId': typeof ShopProductIdRoute
+  '/tracker/$slug': typeof TrackerSlugRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/shop/': typeof ShopIndexRoute
+  '/tracker/': typeof TrackerIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/calendar'
+    | '/community'
+    | '/guides'
+    | '/planner'
+    | '/privacy-policy'
+    | '/shop'
+    | '/terms-of-use'
+    | '/tracker'
+    | '/weather'
+    | '/cart'
+    | '/checkout'
+    | '/dashboard'
+    | '/login'
+    | '/profile'
+    | '/signup'
+    | '/guides/$slug'
+    | '/shop/$productId'
+    | '/tracker/$slug'
+    | '/guides/'
+    | '/shop/'
+    | '/tracker/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/calendar'
+    | '/community'
+    | '/planner'
+    | '/privacy-policy'
+    | '/terms-of-use'
+    | '/weather'
+    | '/cart'
+    | '/checkout'
+    | '/dashboard'
+    | '/login'
+    | '/profile'
+    | '/signup'
+    | '/guides/$slug'
+    | '/shop/$productId'
+    | '/tracker/$slug'
+    | '/guides'
+    | '/shop'
+    | '/tracker'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/calendar'
+    | '/community'
+    | '/guides'
+    | '/planner'
+    | '/privacy-policy'
+    | '/shop'
+    | '/terms-of-use'
+    | '/tracker'
+    | '/weather'
+    | '/(app)/cart'
+    | '/(app)/checkout'
+    | '/(app)/dashboard'
+    | '/(app)/login'
+    | '/(app)/profile'
+    | '/(app)/signup'
+    | '/guides/$slug'
+    | '/shop/$productId'
+    | '/tracker/$slug'
+    | '/guides/'
+    | '/shop/'
+    | '/tracker/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CalendarRoute: typeof CalendarRoute
+  CommunityRoute: typeof CommunityRoute
+  GuidesRoute: typeof GuidesRouteWithChildren
+  PlannerRoute: typeof PlannerRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ShopRoute: typeof ShopRouteWithChildren
+  TermsOfUseRoute: typeof TermsOfUseRoute
+  TrackerRoute: typeof TrackerRouteWithChildren
+  WeatherRoute: typeof WeatherRoute
+  appCartRoute: typeof appCartRoute
+  appCheckoutRoute: typeof appCheckoutRoute
+  appDashboardRoute: typeof appDashboardRoute
+  appLoginRoute: typeof appLoginRoute
+  appProfileRoute: typeof appProfileRoute
+  appSignupRoute: typeof appSignupRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +326,219 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides': {
+      id: '/guides'
+      path: '/guides'
+      fullPath: '/guides'
+      preLoaderRoute: typeof GuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-use': {
+      id: '/terms-of-use'
+      path: '/terms-of-use'
+      fullPath: '/terms-of-use'
+      preLoaderRoute: typeof TermsOfUseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tracker': {
+      id: '/tracker'
+      path: '/tracker'
+      fullPath: '/tracker'
+      preLoaderRoute: typeof TrackerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weather': {
+      id: '/weather'
+      path: '/weather'
+      fullPath: '/weather'
+      preLoaderRoute: typeof WeatherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(app)/cart': {
+      id: '/(app)/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof appCartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(app)/checkout': {
+      id: '/(app)/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof appCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(app)/dashboard': {
+      id: '/(app)/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof appDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(app)/login': {
+      id: '/(app)/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof appLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(app)/profile': {
+      id: '/(app)/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof appProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(app)/signup': {
+      id: '/(app)/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof appSignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof GuidesRoute
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof GuidesRoute
+    }
+    '/shop/': {
+      id: '/shop/'
+      path: '/'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof ShopRoute
+    }
+    '/shop/$productId': {
+      id: '/shop/$productId'
+      path: '/$productId'
+      fullPath: '/shop/$productId'
+      preLoaderRoute: typeof ShopProductIdRouteImport
+      parentRoute: typeof ShopRoute
+    }
+    '/tracker/': {
+      id: '/tracker/'
+      path: '/'
+      fullPath: '/tracker/'
+      preLoaderRoute: typeof TrackerIndexRouteImport
+      parentRoute: typeof TrackerRoute
+    }
+    '/tracker/$slug': {
+      id: '/tracker/$slug'
+      path: '/$slug'
+      fullPath: '/tracker/$slug'
+      preLoaderRoute: typeof TrackerSlugRouteImport
+      parentRoute: typeof TrackerRoute
+    }
   }
 }
 
+interface GuidesRouteChildren {
+  GuidesSlugRoute: typeof GuidesSlugRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
+}
+
+const GuidesRouteChildren: GuidesRouteChildren = {
+  GuidesSlugRoute: GuidesSlugRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
+}
+
+const GuidesRouteWithChildren =
+  GuidesRoute._addFileChildren(GuidesRouteChildren)
+
+interface ShopRouteChildren {
+  ShopProductIdRoute: typeof ShopProductIdRoute
+  ShopIndexRoute: typeof ShopIndexRoute
+}
+
+const ShopRouteChildren: ShopRouteChildren = {
+  ShopProductIdRoute: ShopProductIdRoute,
+  ShopIndexRoute: ShopIndexRoute,
+}
+
+const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
+
+interface TrackerRouteChildren {
+  TrackerSlugRoute: typeof TrackerSlugRoute
+  TrackerIndexRoute: typeof TrackerIndexRoute
+}
+
+const TrackerRouteChildren: TrackerRouteChildren = {
+  TrackerSlugRoute: TrackerSlugRoute,
+  TrackerIndexRoute: TrackerIndexRoute,
+}
+
+const TrackerRouteWithChildren =
+  TrackerRoute._addFileChildren(TrackerRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CalendarRoute: CalendarRoute,
+  CommunityRoute: CommunityRoute,
+  GuidesRoute: GuidesRouteWithChildren,
+  PlannerRoute: PlannerRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ShopRoute: ShopRouteWithChildren,
+  TermsOfUseRoute: TermsOfUseRoute,
+  TrackerRoute: TrackerRouteWithChildren,
+  WeatherRoute: WeatherRoute,
+  appCartRoute: appCartRoute,
+  appCheckoutRoute: appCheckoutRoute,
+  appDashboardRoute: appDashboardRoute,
+  appLoginRoute: appLoginRoute,
+  appProfileRoute: appProfileRoute,
+  appSignupRoute: appSignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
